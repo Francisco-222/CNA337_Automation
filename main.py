@@ -11,6 +11,16 @@ def print_program_info():
 if __name__ == '__main__':
     print_program_info()
     # TODO - Create a Server object
-    EC2server = Server('3.19.63.224')
+    EC2server = '18.218.148.230'
+    key_location= "C:\\Users\\FG10\\.ssh\\id_rsa"
+    root = "ubuntu"
+    update= 'sudo apt update && sudo apt upgrade'  ## https://www.codegrepper.com/code-examples/objectivec/sudo+apt-get+update+%26%26+sudo+apt-get+upgrade
+    EC2server = Server(EC2server, key_location, root, update)
     # TODO - Call Ping method and print the results
+
+###http://docs.paramiko.org/en/stable/api/client.html
+    print("\nUpdating server using ssh from paramiko")
+    ssh_result = EC2server.upgrade()
+    print(''.join(ssh_result))
     print(EC2server.ping())
+
